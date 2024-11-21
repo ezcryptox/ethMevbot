@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/apple-touch-icon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content="Mevbot">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Eth mevbot">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;0,600;0,700;1,100;1,500;1,600&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap"
+		rel="stylesheet"
+	  />
+  
+	  <link
+		href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+		rel="stylesheet"
+	  />
+
+	  <style>
+		:root {
+			--app-on-primary: #ffffff;
+			--app-primary-50: #ebf5ff;
+			--app-primary-100: #e1effe;
+			--app-primary-200: #c3ddfd;
+			--app-primary-300: #a4cafe;
+			--app-primary-400: #76a9fa;
+			--app-primary-500: #3f83f8;
+			--app-primary-600: #0346ff;
+			--app-primary-700: #1a56db;
+			--app-primary-800: #1e429f;
+			--app-primary-900: #233876;
+			--app-gray-50: #f9fafb;
+			--app-gray-100: #f3f4f6;
+			--app-gray-200: #e5e7eb;
+			--app-gray-300: #d1d5db;
+			--app-gray-400: #9ca3af;
+			--app-gray-500: #6b7280;
+			--app-gray-600: #4b5563;
+			--app-gray-700: #374151;
+			--app-gray-800: #1f2a37;
+			--app-gray-900: #111928;
+			--app-blue-50: #ebf5ff;
+			--app-blue-100: #e1effe;
+			--app-blue-200: #c3ddfd;
+			--app-blue-300: #a4cafe;
+			--app-blue-400: #76a9fa;
+			--app-blue-500: #3f83f8;
+			--app-blue-600: #0346ff;
+			--app-blue-700: #1a56db;
+			--app-blue-800: #1e429f;
+			--app-blue-900: #233876;
+			--app-red-50: #fdf2f2;
+			--app-red-100: #fde8e8;
+			--app-red-200: #fbd5d5;
+			--app-red-300: #f8b4b4;
+			--app-red-400: #f98080;
+			--app-red-500: #f05252;
+			--app-red-600: #e02424;
+			--app-red-700: #c81e1e;
+			--app-red-800: #9b1c1c;
+			--app-red-900: #771d1d;
+			--app-green-50: #f3faf7;
+			--app-green-100: #def7ec;
+			--app-green-200: #bcf0da;
+			--app-green-300: #84e1bc;
+			--app-green-400: #31c48d;
+			--app-green-500: #0e9f6e;
+			--app-green-600: #057a55;
+			--app-green-700: #046c4e;
+			--app-green-800: #03543f;
+			--app-green-900: #014737;
+			--app-yellow-50: #fdfdea;
+			--app-yellow-100: #fdf6b2;
+			--app-yellow-200: #fce96a;
+			--app-yellow-300: #faca15;
+			--app-yellow-400: #e3a008;
+			--app-yellow-500: #c27803;
+			--app-yellow-600: #9f580a;
+			--app-yellow-700: #8e4b10;
+			--app-yellow-800: #723b13;
+			--app-yellow-900: #633112;
+			--app-success: #30cca4;
+			--app-warning: #fbc94a;
+			--app-error: #fb4a61;
+			--app-info: #d4d4d4;
+			--app-white: #ffffff;
+			--app-black: #000000;
+		}
+		*, :before, :after {
+			box-sizing: border-box;
+			border-width: 0;
+			border-style: solid;
+			border-color: #e5e7eb;
+		}
+		*, :before, :after {
+			--tw-border-spacing-x: 0;
+			--tw-border-spacing-y: 0;
+			--tw-translate-x: 0;
+			--tw-translate-y: 0;
+			--tw-rotate: 0;
+			--tw-skew-x: 0;
+			--tw-skew-y: 0;
+			--tw-scale-x: 1;
+			--tw-scale-y: 1;
+			--tw-pan-x: ;
+			--tw-pan-y: ;
+			--tw-pinch-zoom: ;
+			--tw-scroll-snap-strictness: proximity;
+			--tw-gradient-from-position: ;
+			--tw-gradient-via-position: ;
+			--tw-gradient-to-position: ;
+			--tw-ordinal: ;
+			--tw-slashed-zero: ;
+			--tw-numeric-figure: ;
+			--tw-numeric-spacing: ;
+			--tw-numeric-fraction: ;
+			--tw-ring-inset: ;
+			--tw-ring-offset-width: 0px;
+			--tw-ring-offset-color: #fff;
+			--tw-ring-color: rgb(59 130 246 / .5);
+			--tw-ring-offset-shadow: 0 0 #0000;
+			--tw-ring-shadow: 0 0 #0000;
+			--tw-shadow: 0 0 #0000;
+			--tw-shadow-colored: 0 0 #0000;
+			--tw-blur: ;
+			--tw-brightness: ;
+			--tw-contrast: ;
+			--tw-grayscale: ;
+			--tw-hue-rotate: ;
+			--tw-invert: ;
+			--tw-saturate: ;
+			--tw-sepia: ;
+			--tw-drop-shadow: ;
+			--tw-backdrop-blur: ;
+			--tw-backdrop-brightness: ;
+			--tw-backdrop-contrast: ;
+			--tw-backdrop-grayscale: ;
+			--tw-backdrop-hue-rotate: ;
+			--tw-backdrop-invert: ;
+			--tw-backdrop-opacity: ;
+			--tw-backdrop-saturate: ;
+			--tw-backdrop-sepia: ;
+			--tw-contain-size: ;
+			--tw-contain-layout: ;
+			--tw-contain-paint: ;
+			--tw-contain-style: ;
+		}
+		*, :before, :after {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-pan-x: ;
+    --tw-pan-y: ;
+    --tw-pinch-zoom: ;
+    --tw-scroll-snap-strictness: proximity;
+    --tw-gradient-from-position: ;
+    --tw-gradient-via-position: ;
+    --tw-gradient-to-position: ;
+    --tw-ordinal: ;
+    --tw-slashed-zero: ;
+    --tw-numeric-figure: ;
+    --tw-numeric-spacing: ;
+    --tw-numeric-fraction: ;
+    --tw-ring-inset: ;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / .5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    --tw-blur: ;
+    --tw-brightness: ;
+    --tw-contrast: ;
+    --tw-grayscale: ;
+    --tw-hue-rotate: ;
+    --tw-invert: ;
+    --tw-saturate: ;
+    --tw-sepia: ;
+    --tw-drop-shadow: ;
+    --tw-backdrop-blur: ;
+    --tw-backdrop-brightness: ;
+    --tw-backdrop-contrast: ;
+    --tw-backdrop-grayscale: ;
+    --tw-backdrop-hue-rotate: ;
+    --tw-backdrop-invert: ;
+    --tw-backdrop-opacity: ;
+    --tw-backdrop-saturate: ;
+    --tw-backdrop-sepia: ;
+    --tw-contain-size: ;
+    --tw-contain-layout: ;
+    --tw-contain-paint: ;
+    --tw-contain-style: ;
+}
+		body {
+			font-family: DM Sans, sans-serif !important;
+			font-weight: 500;
+		}
+		body {
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		body {
+			margin: 0;
+			line-height: inherit;
+		}
+	  </style>
+
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover" class="bg-app-gray-100">
+		<div>%sveltekit.body%</div>
+		
+	</body>
+</html>
