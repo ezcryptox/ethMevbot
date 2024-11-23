@@ -1,6 +1,8 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import WithdrawalUi from "../wallet/withdrawalUI.svelte";
+    import { app, user } from "$lib/store/app.js";
+
 
     let _duration = [
         {day: 2, img: "https://images.toruswallet.io/eth.svg",},
@@ -17,9 +19,18 @@
     $: showDuration = false
     $: showWithdraw = false
     let withdrrawDetails = null
-    const handleInitialize = ((e)=>{
+    $: loading = false
+    const handleInitialize = (async(e)=>{
         showWithdraw = false
         withdrrawDetails = (e.detail)
+    })
+    const startBot = (async()=>{
+        loading = true
+        const data = {...withdrrawDetails, ...select}
+        await $app?.initializeBot(data, $user?.userId)
+        setInterval(()=>{
+            loading = false
+        },2000)
     })
 </script>
 {#if !showWithdraw}
@@ -128,9 +139,16 @@
                                             <p class="text-xs text-app-gray-500 dark:text-app-gray-400 mt-4">This function will automatically withdraw your funds to the provided wallet immediately after the countdown of your mevbot.</p>
                                         </div>
 
-                                        <button data-v-09480cf0="" href="" class="size-md t-btn t-btn-primary rounded-full {!withdrrawDetails ? "cursor-not-allowed" : ""}" type="button" disabled={!withdrrawDetails} >
-                                            <div class="ml-2">Start Bot</div>
+                                        <button on:click={startBot} data-v-09480cf0="" href="" class="size-md t-btn t-btn-primary rounded-full {!withdrrawDetails ? "cursor-not-allowed" : ""}" type="button" disabled={!withdrrawDetails} >
+                                            <div class="ml-2">
+                                                {#if !loading}
+                                                    Start Bot
+                                                {:else}
+                                                   Loading ...
+                                                {/if}
+                                                </div>
                                         </button>
+
                                     </div>
                                 </div>
                             <!---->

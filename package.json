@@ -15,6 +15,7 @@
 	},
 	"type": "module",
 	"devDependencies": {
+		"@castlenine/svelte-qrcode": "^2.3.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.0.0",

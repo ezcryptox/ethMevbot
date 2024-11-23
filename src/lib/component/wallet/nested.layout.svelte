@@ -8,13 +8,17 @@
     import { handleETHtoFIXED, handleUSDtoFIXED } from "$lib/util.js";
 
     $: recive = false
+    import { createEventDispatcher } from "svelte";
+
+    const dispatch = createEventDispatcher();
+
 
 </script>
 
 <div data-v-e8631f3f="" id="" tabindex="-1" role="alertdialog" aria-modal="true" data-modal-placement="modal-center" class="fixed !z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-modal modal !opacity-100 visible modal-container modal-center backdrop-blur"  style="">
     <div data-v-e8631f3f="" class="relative h-full md:h-auto bg-app-white dark:bg-app-gray-700 pointer-events-auto transition duration-300 ease-in-out origin-center modal-size-default rounded-lg shadow border dark:border-app-gray-700 @container/wallet !overflow-hidden !rounded-3xl w-[375px] !h-[600px] border-0 p-0 !bg-app-light-surface-main dark:!bg-app-dark-surface-main" style="">
         <!-- svelte-ignore a11y_consider_explicit_label -->
-        <button on:click={()=> goto("/")} data-v-e8631f3f="" type="button" class="absolute right-1 top-1 text-app-gray-400 bg-transparent hover:text-app-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:text-app-white !top-[33px] !right-[25px] text-app-gray-800 dark:text-app-gray-300 z-30" data-modal-hide="staticModal">
+        <button on:click={()=> dispatch("close")}  data-v-e8631f3f="" type="button" class="absolute right-1 top-1 text-app-gray-400 bg-transparent hover:text-app-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:text-app-white !top-[33px] !right-[25px] text-app-gray-800 dark:text-app-gray-300 z-30" data-modal-hide="staticModal">
             <svg data-v-e8631f3f="" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path data-v-e8631f3f="" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
@@ -49,7 +53,7 @@
                             <button data-v-09480cf0="" data-v-048dde58="" href="" class="size-md t-btn t-btn-text rounded-md dropdown-button undefined !p-0" type="button"  data-dropdown-toggle="dropdown">
                                 <!---->
                                 <div data-v-7f753ef2="" data-v-0d3cd8dd="" id=""  class="avatar-container w-8 h-8 rounded-full" >
-                                    <img data-v-0d3cd8dd="" class="w-10 h-10 max-w-full max-h-full" src="{$user?.user?.image}" alt="{$user?.user?.name}">
+                                    <img data-v-0d3cd8dd="" class="w-10 h-10 max-w-full max-h-full" src="{$user?.user?.photoURL}" alt="{$user?.user?.displayName}">
                                 </div>
                             </button>
                             <!----><!---->
@@ -79,7 +83,7 @@
                 <button data-v-09480cf0="" data-v-048dde58="" href="" class="size-md t-btn t-btn-text rounded-md dropdown-button undefined !p-0" type="button"  data-dropdown-toggle="dropdown">
                     <!---->
                     <div data-v-7f753ef2="" id=""  class="avatar-container w-8 h-8 rounded-full" >
-                        <img class="w-10 h-10 max-w-full max-h-full" src="{$user?.user?.image}" alt="{$user?.user?.name}">
+                        <img class="w-10 h-10 max-w-full max-h-full" src="{$user?.user?.photoURL}" alt="{$user?.user?.displayName}">
                     </div>
                 </button>
             <!----><!---->
@@ -96,9 +100,9 @@
             </div>
         </div>
         <div data-v-62278ace="" class="order-1 mb-2 @sm/wallet:mb-0 @sm/wallet:order-2 flex justify-center w-full @sm/wallet:w-auto !z-[5]">
-            <button data-v-09480cf0="" data-v-62278ace="" href="" class="size-sm t-btn t-btn-text rounded-full relative !text-app-gray-900 dark:!text-app-white !no-underline @sm/wallet:!hidden" type="button" >
+            <button on:click={()=> $app.copyToClipboard($user?.walletAddress)} data-v-09480cf0="" data-v-62278ace="" href="" class="size-sm t-btn t-btn-text rounded-full relative !text-app-gray-900 dark:!text-app-white !no-underline @sm/wallet:!hidden" type="button" >
                 <!----><!---->
-                <span class="text-base">0xf1C7...E4cf73</span>
+                <span class="text-base">{$app.truncateMiddle($user?.walletAddress, 20)}</span>
                 <div class="ml-2">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer w-5" style="width: 20px; height: 20px;">
                         <path d="M10.6665 12H11.3332C12.0696 12 12.6665 11.403 12.6665 10.6667V3.33333C12.6665 2.59695 12.0696 2 11.3332 2H5.99984C5.26346 2 4.6665 2.59695 4.6665 3.33333V4M10.6665 12H5.99984C5.26346 12 4.6665 11.403 4.6665 10.6667V4M10.6665 12V12.6667C10.6665 13.403 10.0696 14 9.33317 14H3.99984C3.26346 14 2.6665 13.403 2.6665 12.6667V5.33333C2.6665 4.59695 3.26346 4 3.99984 4H4.6665" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -117,7 +121,7 @@
             </svg>
             <p>Send</p>
         </button>
-        <button data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs" type="button"  title="Receive">
+        <button on:click={()=> recive = true} data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs" type="button"  title="Receive">
             <!---->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="hidden @xs/wallet:block mr-1 @sm/wallet:mr-2 !w-3  h-3 w-5" style="width: 20px; height: 20px;">
                 <path fill="currentColor" fill-rule="evenodd" d="M16.707 10.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 1 1 1.414-1.414L9 14.586V3a1 1 0 0 1 2 0v11.586l4.293-4.293a1 1 0 0 1 1.414 0" clip-rule="evenodd"></path>
@@ -150,7 +154,7 @@
     <div data-v-62278ace="" class="circle backdrop3 bg-app-primary-600 rounded-full absolute"></div>
 </div>
 {#if recive}
-    <Recieve />
+    <Recieve on:close={()=> recive = false} />
 {/if}
    
     <div data-v-13413aed="" class="flex flex-col flex-grow overflow-hidden p-4 @sm/wallet:mt-4 @sm/wallet:p-1">

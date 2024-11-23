@@ -1,5 +1,5 @@
 <script>
-
+    import { user, app } from "$lib/store/app.js"
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
     $: showTokenDropdown = false
@@ -65,11 +65,11 @@
                             <div data-v-f4a38134="" class="bg-app-light-surface2 dark:bg-app-dark-surface3 rounded-2xl p-6 mb-4 flex justify-between">
                                 <div data-v-f4a38134="">
                                     <p data-v-f4a38134="" class="text-app-gray-500 dark:text-app-gray-300 text-xs">Sending from</p>
-                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">0xf1C...4cf73</p>
+                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">{$app.truncateMiddle($user?.walletAddress, 20)}</p>
                                 </div>
                                 <div data-v-f4a38134="" class="text-right">
                                     <p data-v-f4a38134="" class="text-app-gray-500 dark:text-app-gray-300 text-xs">Available Balance</p>
-                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">0 <span data-v-f4a38134="" class="text-xs uppercase">ETH</span>
+                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">{$user?.balance} <span data-v-f4a38134="" class="text-xs uppercase">ETH</span>
                                     </p>
                                 </div>
                             </div>
