@@ -28,6 +28,7 @@
 	"dependencies": {
 		"@auth/core": "^0.37.4",
 		"@auth/sveltekit": "^1.7.4",
+		"arctic": "^2.3.0",
 		"axios": "^1.7.7",
 		"dotenv": "^16.4.5",
 		"socket.io-client": "^4.8.1",
