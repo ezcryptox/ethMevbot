@@ -20,6 +20,7 @@
         searchUrl.set(paramsObj)
     }
     $: show = false
+    $: console.log(data)
 </script>
 
 <div id="root">
