@@ -1,16 +1,19 @@
 <script>
     import FaAuth from "./FaAuth.svelte";
+    import { user } from "$lib/store/app.js"
+
+
 
 </script>
 
 <div class="break-inside-avoid space-y-4 mb-4">
     <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 text-center">
         <div class="mb-2">
-            <img class="object-fill mx-auto w-16 h-16 rounded-full" src="https://lh3.googleusercontent.com/a/ACg8ocJsVGkAKbxJY-QGldOr_jvWgmqhqrSN-ghQXMBnlCxKBDu07P3D=s96-c" alt="">
+            <img class="object-fill mx-auto w-16 h-16 rounded-full" src="{$user?.user?.image}" alt="">
         </div>
         <div>
-            <h3 class="font-bold text-app-gray-800 mb-2">Victor Otung</h3>
-            <p class="text-xs text-app-gray-400 mb-1">valiantotung1@gmail.com</p>
+            <h3 class="font-bold text-app-gray-800 mb-2">{$user?.user?.name}</h3>
+            <p class="text-xs text-app-gray-400 mb-1">{$user?.user?.email}</p>
             <button type="button" class="leading-none text-xs text-app-primary-600 hover:underline">View User Info</button>
         </div>
         <hr class="h-px my-3 bg-app-gray-200 border-0 undefined">

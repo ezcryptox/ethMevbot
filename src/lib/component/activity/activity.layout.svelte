@@ -1,5 +1,14 @@
 
-
+<script>
+    import { socket } from "$lib/store/app.js";
+    import { onMount } from "svelte";
+    $: strategy = 'ARBITRAGE'
+    onMount(()=>{
+        $socket.io.on("strategy", ((data)=>{
+            strategy = data
+        }))
+    })
+</script>
 
 
             <!-- ============================================================================================ -->
@@ -35,7 +44,7 @@
             focus-visible:bg-transparent
             focus-visible:ring-1
             focus-visible:ring-app-primary-600
-        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800 mb-2" >Current Strategy: <p class="JHjhkekj">Sandwish</p></button>
+        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800 mb-2" >CurrentStrategy: <p class="JHjhkekj">{strategy}</p></button>
         <button  class="flex
             rounded-md
             h-[42px]
@@ -61,7 +70,7 @@
             focus-visible:bg-transparent
             focus-visible:ring-1
             focus-visible:ring-app-primary-600
-        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800" >Profits: <p class="JHjhkekj"> 0.242 ETH</p></button>
+        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800" >Profits: <p class="JHjhkekj"> 0.001627 ETH</p></button>
     </div>
     <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 undefined">
         <p class="text-sm text-app-gray-800">Have any questions?

@@ -8,3 +8,6 @@ export let app = writable(_app)
 
 let _searchUrl = {}
 export let searchUrl = writable(_searchUrl)
+
+let _socket = {}
+export let socket = writable(_socket)

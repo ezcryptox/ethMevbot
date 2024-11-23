@@ -1,9 +1,11 @@
 <script>
+    import { Toaster } from 'svelte-sonner'
     import "../style/global.css"
     import Navbar from "$lib/navbar.svelte";
     import Nested from "$lib/component/wallet/nested.layout.svelte";
     import { page } from "$app/stores";
     import { searchUrl } from "$lib/store/app.js";
+    import ShowActivities from '$lib/component/activity/showActivities.svelte';
     export let data
 
     $: queryString = ""
@@ -21,6 +23,7 @@
 </script>
 
 <div id="root">
+    <Toaster position="bottom-left" expand={false} richColors  />
     <div class="min-h-screen flex flex-col">
         <Navbar isLogin={data?.session}/>
         <slot></slot>
@@ -29,5 +32,4 @@
 {#if  queryString}
     <Nested />
 {/if}
-
 
