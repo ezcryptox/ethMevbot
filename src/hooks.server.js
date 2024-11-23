@@ -1,5 +1,5 @@
 import { SvelteKitAuth } from "@auth/sveltekit";
-// import Google from "@auth/sveltekit/providers/google";
+import Google from "@auth/sveltekit/providers/google";
 // import { GOOGLEID, GOOGLE_SECRET } from "$env/static/private";
 
 
