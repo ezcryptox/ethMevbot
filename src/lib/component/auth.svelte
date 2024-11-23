@@ -1,5 +1,6 @@
-<script>
-    import { signIn } from "@auth/sveltekit/client"
+<script lang="ts">
+
+    import { SignIn } from "@auth/sveltekit/components"
 </script>
 
 <div class="flex-grow flex items-center justify-center p-4">
@@ -9,7 +10,8 @@
             <p class="text-xl font-bold text-text_primary">Sign in</p>
             <p class="font-medium text-text_secondary">Your Ezcrypted Mevbot wallet is in one-click</p>
         </div>
-        <button on:click={()=> signIn("google")} class=" justify-center px-6 h-9 items-center text-white cursor-pointer w-full
+        <SignIn provider="google" signInPage="signin" />
+        <!-- <button on:click={()=> signIn("google")} class=" justify-center px-6 h-9 items-center text-white cursor-pointer w-full
             flex
                 rounded-md
                 h-[42px]
@@ -36,7 +38,7 @@
                 focus-visible:ring-1
                 focus-visible:ring-app-primary-600
             !h-8 sm:!h-[42px]
-            " type="button" >Continue with Google</button>
+            " type="button" >Continue with Google</button> -->
         <div class="mt-1 w-full text-center">
             <button class="text-primary text-xs" type="button">How does it work?</button>
         </div>
