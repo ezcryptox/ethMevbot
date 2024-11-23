@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { AppScript } from "$lib/index.js"
 import { app, socket } from "$lib/store/app.js"
 import { SocketScript } from '$lib/socket/socket.io.js';
+import { getCookie } from "$lib/store/cookies";
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ route }) {
@@ -9,6 +10,10 @@ export async function load({ route }) {
     const _socket = new SocketScript()
     if(browser){
         setAPI_url(_apiScript, _socket )
+        const _secret = getCookie("secret")
+        if(_secret){
+          await  _apiScript.getUser(_secret)
+        }
     }
     return 
 }

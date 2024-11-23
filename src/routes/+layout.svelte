@@ -6,7 +6,6 @@
     import { page } from "$app/stores";
     import { searchUrl } from "$lib/store/app.js";
     import ShowActivities from '$lib/component/activity/showActivities.svelte';
-    export let data
 
     $: queryString = ""
     $: params = ""
@@ -20,13 +19,13 @@
         searchUrl.set(paramsObj)
     }
     $: show = false
-    $: console.log(data)
+
 </script>
 
 <div id="root">
     <Toaster position="bottom-left" expand={false} richColors  />
     <div class="min-h-screen flex flex-col">
-        <Navbar isLogin={data?.session}/>
+        <Navbar />
         <slot></slot>
     </div>
 </div>

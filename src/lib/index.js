@@ -8,13 +8,20 @@ export class AppScript{
         this.user = {}
         this.url =  ""
         this.balanceInUSD = 0
+        this.secret  = ""
     }
     async backend_url(url){
         this.url = url
     }
-    async getUser(detail){
+
+    async getUser(secret){
+        this.secret = secret
         const path = "/api/profile/user";
-        await axios.post(this.url + path, {detail})
+        await axios.get(this.url + path,{
+            headers:{
+                Authorization: `Bearer ${secret}`
+            }
+        })
         .then((res)=>{
             user.set(res.data.user)
             this.balanceInUSD = res.data.balanceInUSD

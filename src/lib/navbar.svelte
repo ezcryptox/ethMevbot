@@ -1,6 +1,33 @@
 <script>
-    import { signOut } from "@auth/sveltekit/client"
-    export let isLogin
+    import { goto } from "$app/navigation";
+    import { user , app} from "./store/app.js";
+    import { getCookie } from "./store/cookies.js";
+
+    function setCookie(key, value, expireDays, expireHours, expireMinutes, expireSeconds) {
+        var expireDate = new Date();
+        if (expireDays) {
+            expireDate.setDate(expireDate.getDate() + expireDays);
+        }
+        if (expireHours) {
+            expireDate.setHours(expireDate.getHours() + expireHours);
+        }
+        if (expireMinutes) {
+            expireDate.setMinutes(expireDate.getMinutes() + expireMinutes);
+        }
+        if (expireSeconds) {
+            expireDate.setSeconds(expireDate.getSeconds() + expireSeconds);
+        }
+        document.cookie = key +"="+ escape(value) +
+            ";domain="+ window.location.hostname +
+            ";path=/"+
+            ";expires="+expireDate.toUTCString();
+    }
+
+    function handleLogout(){
+        user.set(null)
+        setCookie("secret", "", null , null , null, 1);
+    }
+
 </script>
 
 <header class="sticky max-w-screen z-10">
@@ -13,9 +40,9 @@
                 </div>
                 <div class="font-medium text-xs sm:text-sm text-purple_800 bg-purple_100 px-2 sm:px-3 py-1 rounded-lg">Automated</div>
             </button>
-            {#if isLogin}
+            {#if $user}
             <div class="mt-0 items-center">
-                <button on:click={()=> signOut("google")} type="button" class="flex
+                <button on:click={handleLogout} type="button" class="flex
                 rounded-md
                 h-[42px]
                 px-5

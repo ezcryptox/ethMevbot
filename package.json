@@ -31,6 +31,7 @@
 		"arctic": "^2.3.0",
 		"axios": "^1.7.7",
 		"dotenv": "^16.4.5",
+		"firebase": "^11.0.2",
 		"socket.io-client": "^4.8.1",
 		"sonner": "^1.7.0",
 		"svelte-sonner": "^0.3.28"

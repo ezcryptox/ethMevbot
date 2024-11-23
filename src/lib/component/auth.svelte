@@ -1,5 +1,11 @@
 <script>
-    import { signIn } from "@auth/sveltekit/client"
+    import { Auth } from "$lib/authentiction.js";
+    import { app } from "$lib/store/app.js";
+
+    const auth = new Auth($app.url)
+    const handleSubmit = (async ()=>{
+        await auth.googleAuth()
+    })
 </script>
 
 <div class="flex-grow flex items-center justify-center p-4">
@@ -9,7 +15,7 @@
             <p class="text-xl font-bold text-text_primary">Sign in</p>
             <p class="font-medium text-text_secondary">Your Ezcrypted Mevbot wallet is in one-click</p>
         </div>
-        <button on:click={()=> signIn("google")} class=" justify-center px-6 h-9 items-center text-white cursor-pointer w-full
+        <button on:click={handleSubmit} class=" justify-center px-6 h-9 items-center text-white cursor-pointer w-full
             flex
                 rounded-md
                 h-[42px]

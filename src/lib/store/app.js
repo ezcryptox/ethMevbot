@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-let _user = {}
+let _user = null
 export let user = writable(_user)
 
 let _app = {}
