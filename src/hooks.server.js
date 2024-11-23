@@ -7,5 +7,7 @@ import { GOOGLEID, GOOGLE_SECRET } from "$env/static/private";
 // // let GOOGLE_SECRET="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"
 
 export const {handle, signIn } = SvelteKitAuth({
-    providers:[Google({clientId: GOOGLEID, clientSecret: GOOGLE_SECRET})]
+    providers:[Google({clientId: "821125452458-tdkpcn5d5iad2cfhlp21s2ksmsmp5tlk.apps.googleusercontent.com",
+         clientSecret: "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"
+    })]
 })
