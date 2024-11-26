@@ -6,17 +6,9 @@
 
     onMount(async()=>{
         const response = await $app?.fetchTransaction()
-        transactions = response
+              // Sort the array in descending order
+            transactions = response
     })
-
-    function getLastElements(array, n) {
-        // Ensure 'n' does not exceed the array length
-        if (n > array.length) {
-            n = array.length;
-        }
-        return array.slice(-n); // Get the last 'n' elements
-    }
-
 
 </script>
 
@@ -31,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            {#each getLastElements(transactions, 20) as trx}
+            {#each transactions as trx}
                 <tr class="">
                     <td style="cursor: auto;">
                         <div class="time font-semibold ">{getFormattedDateTime(trx?.transaction?.timestamp)}</div>
