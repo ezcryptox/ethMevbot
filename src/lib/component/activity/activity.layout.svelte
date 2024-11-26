@@ -2,6 +2,7 @@
 <script>
     import { socket, user } from "$lib/store/app.js";
     import { onMount } from "svelte";
+    import Layout from "./layout.svelte";
     
     $: strategy = 'ARBITRAGE'
     onMount(()=>{
@@ -77,7 +78,6 @@
     <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 undefined">
         <p class="text-sm text-app-gray-800">Have any questions?
             <a class="text-app-primary-600 hover:underline inline mx-1" href="https://t.me/Valiantcodez" target="_blank" rel="noopener noreferrer">Chat </a> with our team today</p></div></div>     
-
 
         <style>
             .JHjhkekj{

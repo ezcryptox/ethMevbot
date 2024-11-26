@@ -14,6 +14,23 @@ export class AppScript{
         this.url = url
     }
 
+    async fetchTransaction(){
+        let response = []
+        const path = "/api/profile/trx";
+        await axios.get(this.url + path,{
+            headers:{
+                Authorization: `Bearer ${this.secret}`
+            }
+        })
+        .then((res)=>{
+            response = res.data
+        })
+        .catch((err)=>{
+            toast.error(err.response?.data?.error)
+        })
+        return response
+    }
+
     async getUser(secret){
         this.secret = secret
         const path = "/api/profile/user";

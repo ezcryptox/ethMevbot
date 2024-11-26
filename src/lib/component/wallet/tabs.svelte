@@ -1,12 +1,19 @@
 <script>
-$: tab = 1
+    import { createEventDispatcher } from "svelte";
+
+    $: tab = 1
+    const dispatch = createEventDispatcher();
+    const settingEl = ((e)=>{
+        dispatch("select",e)
+        tab = e
+    })
 </script>
 
 
 <div class="my-2 w-full @sm/wallet:hidden">
     <div class="mx-auto w-fit flex gap-2 py-3 px-4 bg-app-light-surface1 dark:bg-app-dark-surface4 rounded-full shadow-lg">
   
-            <button on:click={()=> tab = 1} data-v-09480cf0="" href="" class="size-md t-btn {tab === 1 ? "t-btn-primary" : "t-btn-tertiary"} rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
+            <button on:click={()=> settingEl(1)} data-v-09480cf0="" href="" class="size-md t-btn {tab === 1 ? "t-btn-primary" : "t-btn-tertiary"} rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
                 <!---->
                 <div class="mb-1">
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5" style="width: 20px; height: 20px;">
@@ -17,7 +24,7 @@ $: tab = 1
             </button>
    
   
-            <button on:click={()=> tab = 2} data-v-09480cf0="" href="" class="size-md t-btn {tab === 2 ? "t-btn-primary" : "t-btn-tertiary"} rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
+            <button on:click={()=> settingEl(2)} data-v-09480cf0="" href="" class="size-md t-btn {tab === 2 ? "t-btn-primary" : "t-btn-tertiary"} rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
                 <!---->
                 <div class="mb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5" style="width: 20px; height: 20px;">
@@ -28,7 +35,7 @@ $: tab = 1
             </button>
         
  
-            <button on:click={()=> tab = 3} data-v-09480cf0="" href="" class="size-md t-btn {tab === 3 ? "t-btn-primary" : "t-btn-tertiary"}  rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
+            <button on:click={()=> settingEl(3)} data-v-09480cf0="" href="" class="size-md t-btn {tab === 3 ? "t-btn-primary" : "t-btn-tertiary"}  rounded-full !h-[52px] !w-16 !p-0 !rounded-[20px] flex-col items-center justify-center !text-[10px] !leading-none" type="button" >
                 <!---->
                 <div class="mb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-5" style="width: 20px; height: 20px;">
@@ -40,3 +47,4 @@ $: tab = 1
             </button>
     </div>
 </div>
+

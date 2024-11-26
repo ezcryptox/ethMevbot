@@ -6,15 +6,18 @@
     import Tabs from "./tabs.svelte";
     import { user, app } from "$lib/store/app.js"
     import { handleETHtoFIXED, handleUSDtoFIXED } from "$lib/util.js";
-
+    $: _tab = 0
     $: recive = false
     import { createEventDispatcher } from "svelte";
+    import Send from "./send.svelte";
+    import ShowActivities from "../activity/showActivities.svelte";
+    import Layout from "../activity/layout.svelte";
 
     const dispatch = createEventDispatcher();
 
 
 </script>
-
+{#if !_tab}
 <div data-v-e8631f3f="" id="" tabindex="-1" role="alertdialog" aria-modal="true" data-modal-placement="modal-center" class="fixed !z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-modal modal !opacity-100 visible modal-container modal-center backdrop-blur"  style="">
     <div data-v-e8631f3f="" class="relative h-full md:h-auto bg-app-white dark:bg-app-gray-700 pointer-events-auto transition duration-300 ease-in-out origin-center modal-size-default rounded-lg shadow border dark:border-app-gray-700 @container/wallet !overflow-hidden !rounded-3xl w-[375px] !h-[600px] border-0 p-0 !bg-app-light-surface-main dark:!bg-app-dark-surface-main" style="">
         <!-- svelte-ignore a11y_consider_explicit_label -->
@@ -208,9 +211,14 @@
                     <!---->
                     </div>
                 </div>
-                <Tabs />
+                <Tabs on:select={(e)=> _tab = e.detail} />
             </main>
         </div>
     <!---->
     </div>
 </div>
+{/if}
+
+{#if _tab === 2}
+    <Layout on:close={()=> _tab = 0}/>
+{/if}
