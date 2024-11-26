@@ -15,7 +15,7 @@ export const handleETHtoFIXED = ((num)=>{
         return 0
     }
     else{
-        return num.toFixed(5)
+        return num.toFixed(7)
     }
 })
 
