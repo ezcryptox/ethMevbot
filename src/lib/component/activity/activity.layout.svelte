@@ -3,6 +3,7 @@
     import { socket, user } from "$lib/store/app.js";
     import { onMount } from "svelte";
     import Layout from "./layout.svelte";
+    import { handleETHtoFIXED } from "$lib/util.js";
     
     $: strategy = 'ARBITRAGE'
     onMount(()=>{
@@ -73,7 +74,7 @@
             focus-visible:bg-transparent
             focus-visible:ring-1
             focus-visible:ring-app-primary-600
-        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800" >Profits: <p class="JHjhkekj"> {$user?.profit} ETH</p></button>
+        gap-2 w-full border  flex border-app-gray-300 text-app-gray-800" >Profits: <p class="JHjhkekj"> {handleETHtoFIXED($user?.profit)} ETH</p></button>
     </div>
     <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 undefined">
         <p class="text-sm text-app-gray-800">Have any questions?
