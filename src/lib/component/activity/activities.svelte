@@ -1,17 +1,24 @@
 <script>
-    import { app } from "$lib/store/app.js";
+    import Loader from "$lib/loader.svelte";
+import { app } from "$lib/store/app.js";
     import { getFormattedDateTime, handleETHtoFIXED } from "$lib/util.js";
     import { onMount } from "svelte";
     $: transactions = []
+    $: load = false
 
     onMount(async()=>{
+        load = true
         const response = await $app?.fetchTransaction()
-              // Sort the array in descending order
-            transactions = response
+            // Sort the array in descending order
+        transactions = response
+        load = false
     })
 
 </script>
 
+{#if load}
+    <Loader color="btn"/>
+{:else}
 <div class="sc-iNpzLj hBFXqQ tb-bg">
     <table class="sc-gWXbKe iUeetX table sc-hFxENk iIwwcc is-hover">
         <thead>
@@ -62,3 +69,4 @@
     {/if}
 
 </div>
+{/if}
