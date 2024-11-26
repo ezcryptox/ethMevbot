@@ -2,7 +2,6 @@
 <script>
     import { socket, user } from "$lib/store/app.js";
     import { onMount } from "svelte";
-    import Layout from "./layout.svelte";
     import { handleETHtoFIXED } from "$lib/util.js";
     
     $: strategy = 'ARBITRAGE'
@@ -15,13 +14,13 @@
 </script>
 
 
-            <!-- ============================================================================================ -->
-            <div class="break-inside-avoid space-y-4">
-                <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 undefined">
-                    <div class="mb-4">
-                        <h3 class="font-semibold text-app-gray-900  mb-1">Mevbot Activity</h3>
-                        <p class="text-xs text-app-gray-500 ">Monitor your bot as it works for you</p>
-                    </div>
+        <!-- ============================================================================================ -->
+        <div class="break-inside-avoid space-y-4">
+            <div class="px-8 py-6 w-full bg-white !rounded-2xl !shadow-modal !border-0 undefined">
+                <div class="mb-4">
+                    <h3 class="font-semibold text-app-gray-900  mb-1">Mevbot Activity</h3>
+                    <p class="text-xs text-app-gray-500 ">Monitor your bot as it works for you</p>
+                </div>
                     
                     <button  class="flex
             rounded-md

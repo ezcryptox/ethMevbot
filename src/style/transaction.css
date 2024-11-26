@@ -3,6 +3,7 @@
     z-index: 1000;
     inset: 0px;
     background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
     filter: none !important;
 }
 .dialog {
@@ -19,7 +20,7 @@
     transition-duration: 0.5s;
     border-radius: 1.25rem;
     overflow: hidden;
-    background-color: rgb(23, 24, 27);
+    background-color: rgb(255, 255, 255);
 }
 .dialog-back {
     position: absolute;
@@ -95,7 +96,8 @@
 }
 .no-style {
     padding-top: 3.75rem;
-    background-color: rgb(23, 24, 27);
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 .dialog-body {
     position: absolute;
@@ -116,11 +118,11 @@
 ;
     -webkit-box-align: center;
     align-items: center;
-    color: rgb(245, 246, 247);
+    color: rgb(49, 55, 61);
 }
 .fLASqZ:hover svg {
     transform: rotate(-90deg);
-    fill: rgb(245, 246, 247);
+    fill: rgb(95, 105, 117);
 }
 .dziFBu {
     flex: 1 1 auto;
@@ -141,7 +143,7 @@
     height: 2.25rem;
     position: relative;
     border-radius: 1.125rem;
-    background-color: rgba(49, 52, 60, 0.7);
+    background-color: rgba(233, 234, 242, 0.4);
 }
 .kQfmQV .tabs-nav.is-active {
     color: rgb(245, 246, 247);
@@ -200,7 +202,7 @@
     border-top-left-radius: 1.25rem;
     border-top-right-radius: 1.25rem;
     position: relative;
-    background-color: rgb(23, 24, 27);
+    background-color: rgb(255, 255, 255);
     min-height: 100%;
     overflow: hidden;
 }
@@ -221,6 +223,12 @@
 }
 .iUeetX th:first-child, .iUeetX td:first-child {
     text-align: left;
+    font-size: 13px
+}
+.iUeetX td, .iUeetX th {
+    color: rgba(95, 105, 117, 0.8);
+    padding: 1rem 0.875rem;
+    border: none;
 }
 .eMoXGr td, .eMoXGr th {
     color: rgba(152, 167, 181, 0.5);
@@ -228,7 +236,8 @@
     border: none;
 }
 .kkZJui {
-    background-color: rgb(30, 32, 36);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
     padding: 0.75rem 0.75rem 0.75rem 1.25rem;
     flex: 0 0 auto;
     display: flex;
@@ -281,7 +290,7 @@
 .hxODWG {
     width: 1.4em;
     height: 1.4em;
-    fill: rgba(153, 164, 176, 0.6);
+    fill: rgba(95, 105, 117, 0.6);
 }
 .dXTFyi {
     display: flex
@@ -352,7 +361,6 @@
     overflow: hidden;
 }
 .cfwrSE .time {
-    opacity: 0.5;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -425,7 +433,7 @@
 }
 .hBFXqQ::after {
     content: "";
-    background-color: rgb(30, 32, 36);
+    background-color: rgba(233, 234, 242, 0.6);
     height: 3.4375rem;
     position: absolute;
     top: 0px;
@@ -489,15 +497,8 @@
     padding: 1rem 0.875rem;
     border: none;
 }
-.iUeetX td {
-    border: 1px solid transparent;
-    color: rgb(153, 164, 176);
-}
-.iUeetX th, .iUeetX td {
-    overflow: hidden;
-    text-align: center;
-    padding: 0.875rem 0.75rem;
-}
+
+
 .dNNmeg {
     color: rgb(237, 99, 0) !important;
 }
@@ -532,6 +533,11 @@
 .NPlxl {
     flex: 1 1 auto;
     height: 0px;
+}
+.iUeetX td, .iUeetX th {
+    color: rgba(95, 105, 117, 0.8);
+    padding: 1rem 0.875rem;
+    border: none;
 }
 @media screen and (min-width: 621px) {
     * {

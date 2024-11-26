@@ -34,7 +34,7 @@
             {#each getLastElements(transactions, 20) as trx}
                 <tr class="">
                     <td style="cursor: auto;">
-                        <div class="time">{getFormattedDateTime(trx?.transaction?.timestamp)}</div>
+                        <div class="time font-semibold text-sm">{getFormattedDateTime(trx?.transaction?.timestamp)}</div>
                     </td>
                 
                     <td class="sc-fZDhWb iNnwhW">

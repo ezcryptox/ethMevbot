@@ -12,6 +12,7 @@
     import Send from "./send.svelte";
     import ShowActivities from "../activity/showActivities.svelte";
     import Layout from "../activity/layout.svelte";
+    import { toast } from "svelte-sonner";
 
     const dispatch = createEventDispatcher();
 
@@ -117,7 +118,7 @@
 
     
     <div data-v-62278ace="" class="items-center justify-center grid grid-cols-4 gap-2 @xs/wallet:gap-4 @sm/wallet:gap-2 @sm/wallet:justify-end w-full mt-4 @sm/wallet:mt-8 !z-[5] flex @sm/wallet:hidden">
-        <button data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs" type="button"  title="Send">
+        <button on:click={()=> toast.error("Bot is already live and running.")} data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs" type="button"  title="Send">
             <!---->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="hidden @xs/wallet:block mr-1 @sm/wallet:mr-2 !w-3  h-3 w-5" style="width: 20px; height: 20px;">
                 <path fill="currentColor" fill-rule="evenodd" d="M3.293 9.707a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L11 5.414V17a1 1 0 1 1-2 0V5.414L4.707 9.707a1 1 0 0 1-1.414 0" clip-rule="evenodd"></path>
