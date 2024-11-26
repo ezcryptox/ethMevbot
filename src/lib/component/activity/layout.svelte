@@ -11,7 +11,7 @@
 
 
 <div class="sc-bkkeKt kBjSXI">
-    <div class="dialog " style="opacity: 1; width: 782px; height: 620px; margin-top: -310px; margin-left: -391px; transform: scale(1) translateZ(0px);">
+    <div class="dialog " style="opacity: 1; width: 100%; height: 620px; margin-top: -0; margin-left: 0; ">
         <div class="dialog-head has-back has-close">
             <div class="dialog-title">Transactions</div>
         </div>

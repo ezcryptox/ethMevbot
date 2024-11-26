@@ -34,27 +34,27 @@
             {#each getLastElements(transactions, 20) as trx}
                 <tr class="">
                     <td style="cursor: auto;">
-                        <div class="time font-semibold text-sm">{getFormattedDateTime(trx?.transaction?.timestamp)}</div>
+                        <div class="time font-semibold ">{getFormattedDateTime(trx?.transaction?.timestamp)}</div>
                     </td>
                 
                     <td class="sc-fZDhWb iNnwhW">
                         <div class="sc-Galmp erPQzq coin notranslate">
                             <div class="amount">
-                                <span class="amount-str">{handleETHtoFIXED(trx?.transaction?.profit)}</span>
+                                <span class="amount-str ">{handleETHtoFIXED(trx?.transaction?.profit)}</span>
                             </div>
                         </div>
                     </td>
                     <td class="sc-cQYgkQ dNNmeg eHogsQ error" >
                         <div class="sc-Galmp erPQzq coin notranslate">
                             <div class="amount">
-                                <span class="amount-str">
+                                <span class="amount-str ">
                                     {trx.status ? "Successful" : "Fail"}
                             </span>
                         </div>
                     </div>
                     </td>
                     <td style="cursor: auto;">
-                        <div class="time">{trx?.transaction?.trnsactionHash}</div>
+                        <div class="time " >{trx?.transaction?.trnsactionHash}</div>
                     </td>
                 </tr>
             {/each}
