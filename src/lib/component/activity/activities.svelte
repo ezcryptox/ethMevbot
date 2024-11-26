@@ -44,11 +44,11 @@
                             </div>
                         </div>
                     </td>
-                    <td class="sc-cQYgkQ dNNmeg eHogsQ error" >
+                    <td class="sc-cQYgkQ {trx.status ? "eHogsQ": "dNNmeg"}  error" >
                         <div class="sc-Galmp erPQzq coin notranslate">
                             <div class="amount">
                                 <span class="amount-str ">
-                                    {trx.status ? "Successful" : "Fail"}
+                                    {trx.status ? "Successful" : "Failed"}
                             </span>
                         </div>
                     </div>
