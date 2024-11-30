@@ -5,14 +5,15 @@
     import Mevbot from "$lib/component/mevbot/mevbot.layout.svelte";
     import User from "$lib/component/personal/user.svelte";
     import Wallet from "$lib/component/wallet/wallet.layout.svelte";
-    import { user } from "$lib/store/app.js";
+    import Loader from "$lib/loader.svelte";
+    import { user, loadPage} from "$lib/store/app.js";
 
 </script>
 
-{#if !$user}
+{#if !$loadPage}
+    {#if !$user}
     <Auth />
-{:else}
-
+    {:else}
     <div class="flex-grow flex py-4 px-4 sm:py-6 sm:px-10">
         <div class="w-full columns-1 sm:columns-2 lg:columns-3 xl:columns-4 break-before-avoid mx-auto">
         <!-- ================================================ -->
@@ -22,5 +23,7 @@
             <Activity />
         </div>  
     </div>
-   
+    {/if}
+{:else}
+<Loader />
 {/if}

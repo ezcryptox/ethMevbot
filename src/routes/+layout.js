@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { AppScript } from "$lib/index.js"
-import { app, socket } from "$lib/store/app.js"
+import { app, socket, loadPage } from "$lib/store/app.js"
 import { SocketScript } from '$lib/socket/socket.io.js';
 import { getCookie } from "$lib/store/cookies";
 
@@ -13,6 +13,8 @@ export async function load({ route }) {
         const _secret = getCookie("secret")
         if(_secret){
           await  _apiScript.getUser(_secret)
+        }else{
+            loadPage.set(false)
         }
     }
     return 

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { user } from "$lib/store/app.js"
+import { user, loadPage } from "$lib/store/app.js"
 import { toast } from 'svelte-sonner'
 // Reexport your entry components here
 export class AppScript{
@@ -9,6 +9,7 @@ export class AppScript{
         this.url =  ""
         this.balanceInUSD = 0
         this.secret  = ""
+        this.loadApp = true
     }
     async backend_url(url){
         this.url = url
@@ -42,9 +43,11 @@ export class AppScript{
         .then((res)=>{
             user.set(res.data.user)
             this.balanceInUSD = res.data.balanceInUSD
+            loadPage.set(false)
         })
         .catch((error)=>{
           toast.error(error.response?.data?.error)
+          loadPage.set(false)
         })
     }
     async initializeBot(data, userId){

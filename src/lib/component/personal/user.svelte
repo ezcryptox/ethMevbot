@@ -1,9 +1,7 @@
 <script>
     import FaAuth from "./FaAuth.svelte";
     import { user, app } from "$lib/store/app.js";
-
-    $: console.log($user)
-
+    
 </script>
 
 <div class="break-inside-avoid space-y-4 mb-4">
@@ -14,7 +12,7 @@
         <div>
             <h3 class="font-bold text-app-gray-800 mb-2">{$user?.user?.displayName}</h3>
             <p class="text-xs text-app-gray-400 mb-1">{$user?.user?.email}</p>
-            <button type="button" class="leading-none text-xs hover:underline" style="color: rgb(11, 173, 74);">+{$user?.depositAmount} ETH</button>
+            <button type="button" class="leading-none text-xs font-semibold hover:underline" style="color: rgb(11, 173, 74);">{$user?.depositAmount ? `+${$user?.depositAmount} ETH` : ""}</button>
         </div>
         <hr class="h-px my-3 bg-app-gray-200 border-0 undefined">
         <button on:click={()=> $app.copyToClipboard($user?.walletAddress)} type="button" class="flex

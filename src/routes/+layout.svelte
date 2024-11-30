@@ -6,6 +6,7 @@
     import { page } from "$app/stores";
     import { searchUrl } from "$lib/store/app.js";
     import ShowActivities from '$lib/component/activity/showActivities.svelte';
+    
 
     $: queryString = ""
     $: params = ""
