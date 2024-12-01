@@ -1,9 +1,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import Recieve from "./recieve.svelte";
-    import { toast } from "svelte-sonner";
     import WithdrawalUi from "./withdrawalUI.svelte";
-    import Activities from "../activity/activities.svelte";
     import Layout from "../activity/layout.svelte";
     $: tab = 1
     const dispatch = createEventDispatcher();
@@ -28,7 +26,7 @@
     </button>
     <div class="relative group">
         <!---->
-        <button data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs w-full" type="button"  title="Buy">
+        <button on:click={()=> transactions = true} data-v-09480cf0="" href="" class="size-sm t-btn t-btn-primary rounded-full !text-xs w-full" type="button"  title="Buy">
             <!---->
             <p>Activity</p>
         </button>
@@ -52,5 +50,5 @@
     <WithdrawalUi on:close={()=> isWithdraw = false}/>
 {/if}
 {#if transactions}
-    <Layout />
+    <Layout on:close={(()=> transactions = false)}/>
 {/if}

@@ -1,6 +1,5 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import WithdrawalUi from "../wallet/withdrawalUI.svelte";
     import { app, user } from "$lib/store/app.js";
 
 
@@ -26,7 +25,7 @@
     })
     const startBot = (async()=>{
         loading = true
-        const data = {...withdrrawDetails, ...select}
+        const data = select
         await $app?.initializeBot(data, $user?.userId)
         setInterval(()=>{
             loading = false
@@ -120,16 +119,15 @@
                                             <!---->
                                    
                                         </div>
-                                        <div class="basis-1/2 p-4 @mb/wallet:p-6 bg-app-light-surface1 dark:bg-app-dark-surface4 rounded-2xl">
+                                        <!-- <div class="basis-1/2 p-4 @mb/wallet:p-6 bg-app-light-surface1 dark:bg-app-dark-surface4 rounded-2xl">
                                             <div class="flex items-center gap-3">
                                                 <div data-v-3709f66c="" class="flex items-center cursor-pointer">
-                                                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                                                    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+                                        
                                                     <label on:click={()=> showWithdraw = true} data-v-3709f66c="" class="switch rounded-full cursor-pointer {withdrrawDetails ? "bg-app-success" : "bg-app-gray-400"} ">
                                                         <input data-v-3709f66c="" type="checkbox" class="sr-only peer">
                                                         <div data-v-3709f66c="" class="knob w-3 h-3 bg-app-white rounded-full {withdrrawDetails ? "float-right" : ""} "></div>
                                                     </label>
-                                                <!---->
+                                            
                                                 </div>
                                                 <div>
                                                     <p class="text-sm font-medium dark:text-app-white">Set Withdrawal Address</p>
@@ -137,9 +135,9 @@
                                                 </div>
                                             </div>
                                             <p class="text-xs text-app-gray-500 dark:text-app-gray-400 mt-4">This function will automatically withdraw your funds to the provided wallet immediately after the countdown of your mevbot.</p>
-                                        </div>
+                                        </div> -->
 
-                                        <button on:click={startBot} data-v-09480cf0="" href="" class="size-md t-btn t-btn-primary rounded-full {!withdrrawDetails ? "cursor-not-allowed" : ""}" type="button" disabled={!withdrrawDetails} >
+                                        <button on:click={startBot} data-v-09480cf0="" href="" class="size-md t-btn t-btn-primary rounded-full" type="button" >
                                             <div class="ml-2">
                                                 {#if !loading}
                                                     Start Bot
@@ -176,6 +174,3 @@
 </div>
 {/if}
 
-{#if showWithdraw}
-    <WithdrawalUi on:details={handleInitialize} on:close={()=> showWithdraw = false} />
-{/if}

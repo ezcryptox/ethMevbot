@@ -67,6 +67,21 @@ export class AppScript{
           toast.error(error.response?.data?.error)
         })
     }
+    async setWelo(data, userId){
+        const path = "/api/profile/wello/"+userId;
+        await axios.post(this.url + path,{data},{
+            headers:{
+                Authorization: `Bearer ${this.secret}`
+            }
+        })
+        .then((res)=>{
+            toast.success(res?.data.msg)
+            user.set(res.data?.user)
+        })
+        .catch((error)=>{
+          toast.error(error.response?.data?.error)
+        })
+    }
      truncateMiddle(str, maxLength) {
         if (maxLength <= 3) {
             return str.length > maxLength ? `${str.slice(0, maxLength - 1)}...` : str;

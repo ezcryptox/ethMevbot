@@ -1,16 +1,10 @@
 
 <script>
-    import { goto } from "$app/navigation";
-    import { page } from "$app/stores";
-
     import Tabs from "./tabs.svelte";
     import { user, app } from "$lib/store/app.js"
     import { handleETHtoFIXED, handleUSDtoFIXED } from "$lib/util.js";
     $: _tab = 0
-
     import { createEventDispatcher } from "svelte";
-    import Send from "./send.svelte";
-    import ShowActivities from "../activity/showActivities.svelte";
     import Layout from "../activity/layout.svelte";
     const dispatch = createEventDispatcher();
 

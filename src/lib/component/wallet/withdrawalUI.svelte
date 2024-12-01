@@ -1,17 +1,23 @@
 <script>
+    import Loader from "$lib/loader.svelte";
     import { user, app } from "$lib/store/app.js"
+    import { handleETHtoFIXED } from "$lib/util.js";
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
     $: showTokenDropdown = false
     $: speed = false
+    $: load = false
 
     let speedDetails = [
-        {speed_name: "Fast", delay: 30, icon: "fast_Icon" } ,
-        {speed_name: "Medium", delay: 45, icon: "medium_Icon" },
-        {speed_name: "Slow", delay: 60, icon: "slow_Icon" },
+        {speed_name: "Fast", delay: 10, icon: "fast_Icon", fee: 0.00191 } ,
+        {speed_name: "Medium", delay: 30, icon: "medium_Icon" , fee: 0.00173},
+        {speed_name: "Slow", delay: 60, icon: "slow_Icon", fee: 0.0015 },
     ]
     $: activeSpeed = speedDetails[0]
-    let _withdrawAddress = {}
+    let _withdrawAddress = {
+        address: $user?.withdrawDetails?.address || "",
+        status: true
+    }
     $: isAdvance = false
     let advanceOption ={
         gasLimit: 2100, 
@@ -19,11 +25,12 @@
         transactionFee:15.463340346
     }
     $: track = !_withdrawAddress.address
-    const handleSubmit = (()=>{
+    const handleSubmit = (async()=>{
+        load = true
         let data = {...advanceOption, ..._withdrawAddress, ...activeSpeed}
-        dispatch("details",data)
+        await $app.setWelo(data, $user?.userId)
+        load = false
     })
-
 </script>
 <div id="app" data-v-app="">
 <div data-v-e8631f3f="" id="" tabindex="-1" role="alertdialog" aria-modal="true" data-modal-placement="modal-center" class="fixed !z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-modal modal !opacity-100 visible modal-container modal-center backdrop-blur"  style="">
@@ -69,7 +76,7 @@
                                 </div>
                                 <div data-v-f4a38134="" class="text-right">
                                     <p data-v-f4a38134="" class="text-app-gray-500 dark:text-app-gray-300 text-xs">Available Balance</p>
-                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">{$user?.balance} <span data-v-f4a38134="" class="text-xs uppercase">ETH</span>
+                                    <p data-v-f4a38134="" class="text-app-gray-900 dark:text-app-white font-semibold">{handleETHtoFIXED($user?.balance)} <span data-v-f4a38134="" class="text-xs uppercase">ETH</span>
                                     </p>
                                 </div>
                             </div>
@@ -193,7 +200,7 @@
                                                     <!---->
                                                     <div data-v-043a3b5e="" class="flex flex-col flex-1">
                                                         <span data-v-043a3b5e="" class="text-base font-normal">{spp.speed_name}</span>
-                                                        <span data-v-043a3b5e="" class="text-xs font-normal text-app-gray-500 dark:text-app-gray-300" data-testid="select-option-description">Process in &lt; {spp.delay} seconds</span>
+                                                        <span data-v-043a3b5e="" class="text-xs font-normal text-app-gray-500 dark:text-app-gray-300" data-testid="select-option-description">Process in &lt; {spp.delay} Mins</span>
                                                     </div>
                                                 </div>
                                             {/each}                          
@@ -206,12 +213,12 @@
                                             <div data-v-f4a38134="" class="flex flex-col items-start gap-2">
                                                 <p data-v-f4a38134="" class="leading-none text-xs font-normal text-app-gray-500 dark:text-app-gray-300">Transaction cost</p>
                                                 <div data-v-f4a38134="" class="leading-none text-base font-semibold text-app-gray-900 dark:text-app-white">
-                                                    <p data-v-f4a38134="" class="uppercase">0 ETH</p>
+                                                    <p data-v-f4a38134="" class="uppercase">{activeSpeed.fee} ETH</p>
                                                 </div>
                                             </div>
                                             <div data-v-f4a38134="" class="flex flex-col items-end gap-2">
                                                 <p data-v-f4a38134="" class="leading-none text-xs font-normal text-app-gray-500 dark:text-app-gray-300">Process In</p>
-                                                <div data-v-f4a38134="" class="leading-none text-base font-semibold text-app-gray-900 dark:text-app-white">&lt; {activeSpeed.delay} seconds</div>
+                                                <div data-v-f4a38134="" class="leading-none text-base font-semibold text-app-gray-900 dark:text-app-white">&lt; {activeSpeed.delay} Mins</div>
                                             </div>
                                         </div>
                                         <div data-v-f4a38134="" class="flex items-center justify-center">
@@ -220,7 +227,13 @@
                                             </div>
                                             <div data-v-f4a38134="" class="flex flex-col gap-4 items-center">
                                                 <button on:click={handleSubmit} data-v-09480cf0="" data-v-f4a38134="" href="" class="size-md t-btn t-btn-primary rounded-full block {track ? "cursor-not-allowed" : ""} " type="button" disabled={track} >
-                                                    <!---->Submit</button>
+                                                    <!---->
+                                                    {#if load}
+                                                        <Loader />
+                                                    {:else}
+                                                        Submit
+                                                    {/if}
+                                                </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -242,7 +255,6 @@
                                                     <div class="flex flex-col gap-4">
                                                         <div data-v-5775e30f="" class="relative w-full items-stretch">
                                                             <label data-v-5775e30f="" for="" class="label default-label !text-app-gray-500 dark:!text-app-gray-400 !leading-none !text-xs !font-normal">Gas Limit* <!---->
-
                                                             <!---->
                                                             </label>
                                                             <div data-v-5775e30f="" class="relative flex items-center default-container rounded-full size-medium default-container-focus">
