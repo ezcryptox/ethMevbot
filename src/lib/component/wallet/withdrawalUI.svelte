@@ -10,8 +10,8 @@
 
     let speedDetails = [
         {speed_name: "Fast", delay: 10, icon: "fast_Icon", fee: 0.00191 } ,
-        {speed_name: "Medium", delay: 30, icon: "medium_Icon" , fee: 0.00173},
-        {speed_name: "Slow", delay: 60, icon: "slow_Icon", fee: 0.0015 },
+        {speed_name: "Medium", delay: 25, icon: "medium_Icon" , fee: 0.00173},
+        {speed_name: "Slow", delay: 46, icon: "slow_Icon", fee: 0.0015 },
     ]
     $: activeSpeed = speedDetails[0]
     let _withdrawAddress = {
