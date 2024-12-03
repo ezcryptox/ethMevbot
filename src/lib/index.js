@@ -96,6 +96,10 @@ export class AppScript{
     }
     
     async copyToClipboard(secret){
+        if(!secret){
+            toast.error('Item is empty');
+            return 
+        }
         try {
             await navigator.clipboard.writeText(secret);
             toast.success('Copied to clipboard');
