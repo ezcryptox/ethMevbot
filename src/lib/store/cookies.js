@@ -7,3 +7,8 @@ export const getCookie = (name, defaultValue = '') => {
 export const setCookie = (key,value) => {
     document.cookie = `${key}=${value}; path=/;`;
 }
+
+export function deleteCookie(name) {
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+    console.log(`Cookie '${name}' has been deleted.`);
+}
